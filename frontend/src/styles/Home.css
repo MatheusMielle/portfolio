@@ -1,0 +1,86 @@
+/* Overall layout */
+.home-container {
+  display: flex;
+  background-color: #0a0203;
+  color: #ffffff;
+  font-family: "Varela Round", sans-serif;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 60px; /* for footer */
+  overflow: hidden;
+}
+
+/* Main flex zone: left = text, right = widget */
+.main-content {
+  display: flex;
+  flex: 1;
+  padding: 4rem 6rem;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Welcome section */
+.content-left {
+  max-width: 45%;
+  z-index: 2;
+}
+
+.welcome-text {
+  position: relative;
+  z-index: 2;
+}
+
+.headline {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.name-gradient {
+  font-size: 4rem;
+  background: linear-gradient(to right, #8c2b36, #ff5e6c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+
+/* Responsive layout */
+@media (max-width: 770px) {
+  .main-content {
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .content-left {
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 330px) {
+  .headline {
+    font-size: 2.5rem;
+  }
+
+  .name-gradient {
+    font-size: 3rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+}
+
+
+
