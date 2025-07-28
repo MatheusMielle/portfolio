@@ -15,7 +15,7 @@ const TopTracksWidget: React.FC = () => {
   const [youtubeUrl, setYoutubeUrl] = useState<string>("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/recent-tracks")
+    fetch("/api/recent-tracks")
       .then((res) => res.json())
       .then((data) => setTracks(data.slice(0, 10)))
       .catch((err) => console.error("Failed to load tracks:", err));
@@ -25,7 +25,7 @@ const TopTracksWidget: React.FC = () => {
     setPlayingTrack(track);
     try {
       const query = encodeURIComponent(`${track.track} ${track.artist}`);
-      const res = await fetch(`http://localhost:5000/api/search-youtube?query=${query}`);
+      const res = await fetch(`/api/search-youtube?query=${query}`);
       const data = await res.json();
       setYoutubeUrl(data.url);
     } catch (err) {

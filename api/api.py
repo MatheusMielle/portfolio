@@ -40,11 +40,11 @@ else:
         LASTFM_API_KEY = lines[0].strip().split('=')[1]
         LASTFM_USERNAME = lines[1].strip().split('=')[1]
 
-@app.route('/api/health')
+@app.route('/health')
 def health_check():
     return jsonify({"status": "ok"}), 200
 
-@app.route('/api/recent-tracks')
+@app.route('/recent-tracks')
 def recent_tracks():
     
     if not LASTFM_API_KEY or not LASTFM_USERNAME:
@@ -69,7 +69,7 @@ def recent_tracks():
 
     return jsonify(tracks)
 
-@app.route('/api/search-youtube')
+@app.route('/search-youtube')
 def search_youtube():
     query = request.args.get("query")
     if not query:
@@ -83,7 +83,7 @@ def search_youtube():
 
     return jsonify({"error": "No video found"}), 404
 
-@app.route('/api/send-email', methods=['POST'])
+@app.route('/send-email', methods=['POST'])
 def send_email():
     data = request.json
     name = data.get('name')
