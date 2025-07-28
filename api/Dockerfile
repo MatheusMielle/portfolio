@@ -1,4 +1,4 @@
-FROM python:LTS-version-bookworm-slim
+FROM python:3.12-slim-bookworm
 
 WORKDIR /app
 
