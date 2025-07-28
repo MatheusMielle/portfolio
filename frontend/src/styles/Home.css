@@ -7,6 +7,7 @@
   flex-direction: column;
   min-height: 100vh;
   padding-bottom: 60px; /* for footer */
+  padding-top: 80px; /* for fixed navbar */
   overflow: hidden;
 }
 

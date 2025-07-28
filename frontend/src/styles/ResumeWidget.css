@@ -1,0 +1,142 @@
+.resume-widget {
+  background-color: #3e060d95;
+  border-radius: 1rem;
+  padding: 2rem;
+  color: white;
+  max-width: 40%;
+  margin: 2rem 1rem 1rem auto;
+  font-family: "Varela Round", sans-serif;
+  margin-bottom: 4rem;
+  margin-top: 1rem;
+}
+
+/* Responsive styles */
+@media (max-width: 800px) {
+  .resume-widget {
+    max-width: 80%;
+    padding: 1.5rem;
+    margin: 2rem auto 1rem auto;
+  }
+}
+
+@media (max-width: 800px) {
+  .resume-widget {
+    max-width: 95%;
+    padding: 1rem;
+    margin: 1.5rem auto 1rem auto;
+    font-size: 0.98rem;
+  }
+  .section-title {
+    font-size: 1.5rem;
+  }
+  .job-title {
+    font-size: 1.1rem;
+  }
+  .job-dates,
+  .job-location,
+  .job-gpa {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .resume-widget {
+    max-width: 100%;
+    padding: 0.7rem;
+    margin: 1rem 0.2rem 1rem 0.2rem;
+    font-size: 0.93rem;
+  }
+  .section-title {
+    font-size: 1.1rem;
+    padding-bottom: 0.2rem;
+    margin-bottom: 1rem;
+  }
+  .line-container {
+    padding-left: 0.7rem;
+  }
+  .job-title {
+    font-size: 1rem;
+  }
+  .job-dates,
+  .job-location,
+  .job-gpa {
+    font-size: 0.95rem;
+  }
+  .bullet-point {
+    font-size: 0.95rem;
+  }
+  .bullet-icon {
+    font-size: 0.8rem;
+    margin-right: 0.3rem;
+  }
+}
+
+.section-container {
+  margin-bottom: 1%;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #7B0C19;
+  padding-bottom: 0.3rem;
+  color: #fe6375;
+}
+
+.line-container {
+  border-left: 3px solid #7B0C19;
+  padding-left: 1.5rem;
+}
+
+.job-container {
+  margin-bottom: 1.5rem;
+}
+
+.job-title {
+  font-size: 1.25rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.company {
+  font-weight: 400;
+  font-style: italic;
+  color: #FE6375;
+}
+
+.job-dates,
+.job-location,
+.job-gpa {
+  font-size: 1.1rem;
+  color: #FE6375;
+  margin: 0.25rem 0 0.5rem 0;
+}
+
+.bullet-point {
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.bullet-point:hover {
+  color: #f7b8c3;
+}
+
+.bullet-icon {
+  margin-right: 0.5rem;
+  margin-top: 0.2rem;
+  color: #FE6375;
+  font-size: 0.9rem;
+}
+
+.bullet-text {
+  flex: 1;
+  transition: all 0.3s ease;
+}
+
+.bullet-text.expanded {
+  white-space: normal;
+}

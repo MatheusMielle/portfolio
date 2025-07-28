@@ -1,0 +1,124 @@
+.contact-container {
+  background-color: #0a0203;
+  color: white;
+  font-family: "Varela Round", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+    padding-bottom: 40px; /* for footer */
+    padding-top: 60px; /* for fixed navbar */
+}
+
+.contact-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 4rem;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-section {
+  background-color: #3e060d95;
+  padding: 1.5rem;
+  border-radius: 1rem;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #ff5e6c;
+  text-align: center;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  background-color: #1a0d10;
+  border: 1px solid #841c28;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+}
+
+.submit-btn {
+  background-color: #841c28;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #a32838;
+  transform: scale(1.02);
+}
+
+.confirmation-message {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background-color: #3e060d95;
+  border-radius: 1rem;
+}
+
+.confirmation-message h2 {
+  font-size: 1.3rem;
+  color: #ff5e6c;
+  margin-bottom: 1rem;
+}
+
+.social-section {
+  background-color: #3e060d95;
+  padding: 1rem;
+  border-radius: 0.8rem;
+  text-align: center;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.social-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.social-link i {
+  font-size: 1.5rem;
+  color: #ff5e6c;
+}
+
+/* Mobile friendly */
+@media (max-width: 600px) {
+  .contact-main {
+    padding: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.95rem;
+  }
+
+  .submit-btn {
+    font-size: 0.95rem;
+  }
+}

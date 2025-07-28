@@ -1,0 +1,139 @@
+.projects-page {
+  background-color: #0a0203;
+  color: white;
+  font-family: "Varela Round", sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 60px; /* for footer */
+  padding-top: 60px; /* for fixed navbar */
+
+}
+
+.projects-main {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 2rem 4rem;
+  flex: 1;
+}
+
+.projects-widget {
+  background-color: #3e060dcb;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 900px;
+  box-shadow: 0 0 10px #00000080;
+  height: fit-content;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #fe6375;
+  text-align: center;
+  border-bottom: 2px solid #7b0c19;
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.project-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.project-card {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  gap: 1rem;
+  transition: background 0.2s;
+}
+
+
+.project-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.project-meta {
+  flex: 1;
+}
+
+.project-meta strong {
+  font-size: 1.25rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.project-meta p {
+  font-size: 1rem;
+  color: #cccccc;
+  margin: 0;
+}
+
+.project-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.project-btn {
+  background: #841c28;
+  color: white;
+  font-size: 1.1rem;
+  padding: 0.75rem 1.2rem;
+  border-radius: 0.6rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.project-btn i {
+  font-size: 1.5rem;
+}
+
+.project-btn .btn-label {
+  font-size: 1.1rem;
+}
+
+.project-btn:hover {
+  background-color: #a32838;
+  transform: scale(1.05);
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .projects-main {
+    padding: 1.5rem;
+  }
+
+  .project-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .project-links {
+    margin-top: 1rem;
+  }
+}

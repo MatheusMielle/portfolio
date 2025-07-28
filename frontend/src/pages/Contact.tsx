@@ -1,68 +1,131 @@
 import React, { useState } from "react";
+import "../styles/Contact.css";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const Contact: React.FC = () => {
-    const [form, setForm] = useState({ name: "", email: "", message: "" });
-    const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
-    };
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        // Here you would typically send the form data to your backend
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
         setSubmitted(true);
-    };
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setError(data.error || "Failed to send message");
+      }
+    } catch (err) {
+      setError("Network error. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    return (
-        <div style={{ maxWidth: 500, margin: "2rem auto", padding: "2rem", background: "#fff", borderRadius: 8, boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}>
-            <h2>Contact Me</h2>
-            {submitted ? (
-                <p>Thank you for reaching out! I'll get back to you soon.</p>
-            ) : (
-                <form onSubmit={handleSubmit}>
-                    <div style={{ marginBottom: 16 }}>
-                        <label htmlFor="name">Name</label>
-                        <input
-                            style={{ width: "100%", padding: 8, marginTop: 4 }}
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={form.name}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div style={{ marginBottom: 16 }}>
-                        <label htmlFor="email">Email</label>
-                        <input
-                            style={{ width: "100%", padding: 8, marginTop: 4 }}
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={form.email}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div style={{ marginBottom: 16 }}>
-                        <label htmlFor="message">Message</label>
-                        <textarea
-                            style={{ width: "100%", padding: 8, marginTop: 4, minHeight: 80 }}
-                            id="message"
-                            name="message"
-                            value={form.message}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <button type="submit" style={{ padding: "8px 24px", borderRadius: 4, background: "#0078d4", color: "#fff", border: "none" }}>
-                        Send
-                    </button>
-                </form>
-            )}
+  const resetForm = () => {
+    setSubmitted(false);
+    setError(null);
+  };
+
+  return (
+    <div className="contact-container">
+      <Navbar />
+      <div className="contact-main">
+        <div className="form-section">
+          {!submitted ? (
+            <>
+              <h1 className="section-title">Contact</h1>
+              <form onSubmit={handleSubmit} className="contact-form">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+                <textarea
+                  name="message"
+                  placeholder="Your Message"
+                  rows={6}
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                />
+                {error && <p className="error-message">{error}</p>}
+                <button type="submit" className="submit-btn" disabled={loading}>
+                  {loading ? "Sending..." : "Send Message"}
+                </button>
+              </form>
+            </>
+          ) : (
+            <div className="confirmation-message">
+              <h2>Message Sent Successfully!</h2>
+              <button onClick={resetForm} className="submit-btn">
+                Send Another Message
+              </button>
+            </div>
+          )}
         </div>
-    );
+
+        <div className="social-section">
+          <h2>Connect With Me</h2>
+          <div className="social-links">
+            <a
+              href="https://github.com/MatheusMielle"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+            >
+              <i className="bi bi-github"></i>
+              <span>GitHub</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/mmielle/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+            >
+              <i className="bi bi-linkedin"></i>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
 };
 
 export default Contact;

@@ -1,0 +1,23 @@
+[
+  {
+    "name": "PASS Database System",
+    "image": "/images/pass.png",
+    "description": "Modernized a legacy education testing system into a full-stack platform with secure APIs and React UI.",
+    "github": "",
+    "demo": ""
+  },
+  {
+    "name": "Network Connected Chess Game",
+    "image": "/images/chess.png",
+    "description": "Built a multiplayer chess engine in C++ using sockets for real-time play.",
+    "github": "https://github.com/MatheusMielle/ChessGame",
+    "demo": "/chess"
+  },
+  {
+    "name": "NavigateCity.com",
+    "image": "/images/navigate.png",
+    "description": "A travel recommendation site with AI-backed search for attractions and restaurants.",
+    "github": "https://github.com/MatheusMielle/NavigateCity",
+    "demo": "/navigatecity"
+  }
+]

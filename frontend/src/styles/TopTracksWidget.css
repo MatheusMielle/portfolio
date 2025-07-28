@@ -3,7 +3,7 @@
   top: 50%;
   right: 2rem;
   transform: translateY(-50%);
-  background-color: #7B0C19;
+  background-color: #3e060dcb;
   border-radius: 1rem;
   padding: 1rem;
   width: calc(50% - 2rem);
@@ -19,7 +19,7 @@
 
   /* Firefox */
   scrollbar-width: thin;
-  scrollbar-color: #8c2b36 #5D0913;
+  scrollbar-color: #8c2b36 #3e060dcb;
 }
 
 /* WebKit (Chrome, Safari, Edge) */
@@ -28,14 +28,14 @@
 }
 
 .top-tracks-widget::-webkit-scrollbar-track {
-  background: #5D0913;
+  background: #3e060dcb;
   border-radius: 10px;
 }
 
 .top-tracks-widget::-webkit-scrollbar-thumb {
   background-color: #8c2b36;
   border-radius: 10px;
-  border: 2px solid #5D0913;
+  border: 2px solid #3e060dcb;
 }
 
 .top-tracks-widget::-webkit-scrollbar-thumb:hover {
@@ -46,7 +46,6 @@
   margin: 0;
   padding: 1rem;
   text-align: center;
-  background-color: #7B0C19;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 	font-weight: bold;
