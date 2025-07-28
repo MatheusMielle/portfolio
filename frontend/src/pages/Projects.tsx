@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import "../styles/projects.css";
+import "../styles/Projects.css";
 
 interface Project {
   name: string;

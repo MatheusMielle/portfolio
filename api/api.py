@@ -4,7 +4,7 @@ import requests
 from urllib.parse import quote_plus
 from flask_cors import CORS
 from flask_mail import Mail, Message
-dev = True
+dev = False
 app = Flask(__name__)
 
 if not dev:
@@ -39,6 +39,10 @@ else:
         lines = f.readlines()
         LASTFM_API_KEY = lines[0].strip().split('=')[1]
         LASTFM_USERNAME = lines[1].strip().split('=')[1]
+
+@app.route('/api/health')
+def health_check():
+    return jsonify({"status": "ok"}), 200
 
 @app.route('/api/recent-tracks')
 def recent_tracks():
@@ -109,6 +113,6 @@ def send_email():
         print(e)
         return jsonify({'error': 'Failed to send email'}), 500
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+# if __name__ == "__main__":
+#     app.run(host="0.0.0.0", port=5000)
 
