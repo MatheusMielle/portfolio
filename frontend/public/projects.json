@@ -1,23 +1,24 @@
 [
   {
+    "name": "NavigateCity.com",
+    "image": "/images/navigate.png",
+    "description": "NavigateCity is a modern web application designed to help travelers discover and explore cities around the world. The project provides users with comprehensive information about museums, restaurants, parks, famous sightseeing locations, and local dishes across different cities, countries, and continents.",
+    "github": "https://github.com/MatheusMielle/NavigateCity",
+    "demo": "/navigatecity"
+  },
+  {
     "name": "PASS Database System",
-    "image": "/images/pass.png",
+    "image": "",
     "description": "Modernized a legacy education testing system into a full-stack platform with secure APIs and React UI.",
     "github": "",
     "demo": ""
   },
   {
     "name": "Network Connected Chess Game",
-    "image": "/images/chess.png",
+    "image": "",
     "description": "Built a multiplayer chess engine in C++ using sockets for real-time play.",
     "github": "https://github.com/MatheusMielle/ChessGame",
-    "demo": "/chess"
-  },
-  {
-    "name": "NavigateCity.com",
-    "image": "/images/navigate.png",
-    "description": "A travel recommendation site with AI-backed search for attractions and restaurants.",
-    "github": "https://github.com/MatheusMielle/NavigateCity",
-    "demo": "/navigatecity"
+    "demo": ""
   }
+  
 ]
