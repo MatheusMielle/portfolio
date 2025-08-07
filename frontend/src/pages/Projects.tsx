@@ -55,7 +55,6 @@ const Projects: React.FC = () => {
                   {project.demo && (
                     <a
                       href={project.demo}
-                      target="_blank"
                       rel="noopener noreferrer"
                       className="project-btn"
                     >
