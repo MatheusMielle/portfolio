@@ -1,24 +1,44 @@
 [
+    {
+    "name": "This Portfolio",
+    "image": "/images/portfolio.png",
+    "description": "Full-stack personal portfolio website built with React and TypeScript (frontend), Flask (backend), and Docker for containerized deployment.",
+    "github": "https://github.com/MatheusMielle/portfolio",
+    "demo": "/"
+  },
   {
     "name": "NavigateCity.com",
     "image": "/images/navigate.png",
-    "description": "NavigateCity is a modern web application designed to help travelers discover and explore cities around the world. The project provides users with comprehensive information about museums, restaurants, parks, famous sightseeing locations, and local dishes across different cities, countries, and continents.",
+    "description": "NavigateCity is a modern web app that helps travelers explore cities worldwide by offering detailed information on museums, restaurants, parks, landmarks, and local cuisine across various locations.",
     "github": "https://github.com/MatheusMielle/NavigateCity",
     "demo": "/navigatecity"
   },
   {
     "name": "PASS Database System",
-    "image": "",
-    "description": "Modernized a legacy education testing system into a full-stack platform with secure APIs and React UI.",
+    "image": "/images/placeholder.png",
+    "description": "Redesigned Hewitt Learning’s legacy PASS system into a modern full-stack platform. The app streamlines test ordering, score logging, and student data management—replacing the outdated Paradox-based workflow with secure APIs and a React frontend, significantly improving efficiency for educators.",
     "github": "",
     "demo": ""
   },
   {
     "name": "Network Connected Chess Game",
-    "image": "",
-    "description": "Built a multiplayer chess engine in C++ using sockets for real-time play.",
+    "image": "/images/placeholder.png",
+    "description": "A multi-version chess engine project evolving from a 2021 local console game to a 2023 socket-based multiplayer system, and now into a 2025 web-based app with React frontend and C++ RESTful backend. Features include WebSocket support, modern UI, and scalable architecture.",
     "github": "https://github.com/MatheusMielle/ChessGame",
     "demo": ""
+  },
+  {
+    "name": "JunggleWordMania",
+    "image": "/images/placeholder.png",
+    "description": "An educational multiplayer web game that helps students build vocabulary by unscrambling words. Built with Flask and HTML/CSS/JS, the platform features single and multiplayer modes, classroom game creation, leaderboards, and .csv-based word input for teachers.",
+    "github": "https://github.com/MatheusMielle/JunggleWordMania",
+    "demo": ""
+  },
+  {
+    "name": "Article Classification Program",
+    "image": "/images/placeholder.png",
+    "description": "A C++ program that classifies articles as News, Sports, or Culinary based on word frequency analysis. Trains on 30 articles per category and uses vector-based scoring while ignoring common words, punctuation, and case.",
+    "github": "https://github.com/MatheusMielle/ArticleClassifcation",
+    "demo": ""
   }
-  
 ]
