@@ -11,6 +11,8 @@ import About from './pages/About.tsx'
 import Projects from './pages/Projects.tsx'
 import Resume from './pages/Resume.tsx'
 import Contact from './pages/Contact.tsx'
+import Login from './pages/Login.tsx';
+import Forbidden from './pages/Forbidden.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -21,6 +23,8 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/projects" element={<Projects />} />
         <Route path="/resume" element={<Resume />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+  <Route path="/forbidden" element={<Forbidden />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

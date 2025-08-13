@@ -3,3 +3,5 @@ requests
 gunicorn
 flask_mail
 flask-cors
+pymysql
+flask_jwt_extended

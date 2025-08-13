@@ -91,3 +91,50 @@
     z-index: 1001;
   }
 }
+
+/* Logout button */
+.logout-btn {
+  margin-left: 30px;
+  background: linear-gradient(135deg, #b31217 0%, #700d11 100%);
+  border: 1px solid #b31217;
+  color: #fff;
+  font-family: "Varela Round", sans-serif;
+  font-size: 16px;
+  padding: 8px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.3s, transform 0.15s, box-shadow 0.3s;
+}
+
+.logout-btn .nav-link-icon { /* reuse icon spacing */
+  margin-right: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.logout-btn:hover {
+  background: linear-gradient(135deg, #d71a21 0%, #8b1116 100%);
+  box-shadow: 0 4px 14px rgba(179, 18, 23, 0.4);
+}
+
+.logout-btn:active {
+  transform: translateY(1px);
+}
+
+.logout-btn:focus-visible {
+  outline: 2px solid #ff4d55;
+  outline-offset: 2px;
+}
+
+@media (max-width: 850px) {
+  .logout-btn {
+    margin-left: 0;
+    margin-top: 10px;
+    font-size: 20px;
+    padding: 14px 28px;
+    border-radius: 40px;
+  }
+}

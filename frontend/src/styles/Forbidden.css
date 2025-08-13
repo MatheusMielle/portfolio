@@ -1,0 +1,92 @@
+/* Forbidden (403) Page Styles */
+.forbidden-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #0a0203;
+  font-family: "Varela Round", sans-serif;
+  color: #fff;
+}
+
+.forbidden-main { 
+  flex: 1; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 120px 20px 60px; /* space for fixed navbar/footer */
+}
+
+.forbidden-card {
+  background: #3e060d95;
+  border-radius: 1.25rem;
+  padding: 3rem 2.5rem 2.8rem;
+  text-align: center;
+  max-width: 520px;
+  width: 100%;
+  box-shadow: 0 0 14px #00000070;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.status-code {
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1;
+  background: linear-gradient(90deg,#ff5e6c,#8c2b36);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: .75rem;
+  letter-spacing: 2px;
+}
+
+.forbidden-title { 
+  font-size: 2rem; 
+  margin: 0 0 .75rem; 
+  letter-spacing: 1px; 
+}
+
+.forbidden-text { 
+  font-size: 1rem; 
+  color: #d3c9ca; 
+  margin: 0 0 1.75rem; 
+  line-height: 1.5; 
+}
+
+.forbidden-actions { 
+  display: flex; 
+  gap: .85rem; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+}
+
+.forbidden-btn { 
+  display: inline-flex; 
+  align-items: center; 
+  gap: .5rem; 
+  border: none; 
+  border-radius: .9rem; 
+  padding: .85rem 1.35rem; 
+  font-size: .95rem; 
+  font-weight: 600; 
+  letter-spacing: .5px; 
+  cursor: pointer; 
+  background: #57151d; 
+  color: #fff; 
+  transition: background-color .25s, transform .18s ease; 
+}
+
+.forbidden-btn.primary { background: #841c28; }
+.forbidden-btn.secondary { background: #3d0d12; }
+
+.forbidden-btn:hover { transform: translateY(-2px); }
+.forbidden-btn.primary:hover { background: #a32838; }
+.forbidden-btn.secondary:hover { background: #551820; }
+.forbidden-btn:active { transform: translateY(0); }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 560px) {
+  .status-code { font-size: 3.6rem; }
+  .forbidden-card { padding: 2.3rem 1.7rem 2.1rem; }
+  .forbidden-title { font-size: 1.6rem; }
+}

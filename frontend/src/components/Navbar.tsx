@@ -59,7 +59,22 @@ const Navbar: React.FC = () => {
           </span>
           <span className="nav-link-text">Contact</span>
         </a>
-        
+        {/* {permissionLevel != null && (
+          <button
+            type="button"
+            onClick={() => {
+              closeMenu();
+              logout();
+            }}
+            className="logout-btn"
+          >
+            <span className="nav-link-icon">
+              <i className="bi bi-box-arrow-right"></i>
+            </span>
+            <span className="nav-link-text">Logout</span>
+          </button>
+        )} */}
+
       </nav>
     </header>
   );

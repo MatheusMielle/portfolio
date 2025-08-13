@@ -1,17 +1,35 @@
+########################################################################
+#                                   Imports                            #
+########################################################################
 from flask import Flask, jsonify, request
 import os
 import requests
 from urllib.parse import quote_plus
 from flask_cors import CORS
 from flask_mail import Mail, Message
-dev = False
-app = Flask(__name__)
+from flask_jwt_extended import JWTManager, create_access_token, set_access_cookies, verify_jwt_in_request, get_jwt_identity, unset_jwt_cookies
+import pymysql
+from datetime import timedelta
+from functools import wraps
 
-if not dev:
+
+######################################################################
+#                         Global Variables                           #
+######################################################################
+DEVELOPMENT = os.getenv("DEVELOPMENT", "TRUE")
+
+if os.getenv("DEVELOPMENT") == "FALSE":
     LASTFM_API_KEY = os.getenv("LASTFM_API_KEY")
     LASTFM_USERNAME = os.getenv("LASTFM_USERNAME")
     MAIL_USERNAME = os.getenv("MAIL_USERNAME")
     MAIL_PASSWORD = os.getenv("MAIL_PASSWORD")
+    MYSQL_HOST = os.getenv("MYSQL_HOST")
+    MYSQL_DATABASE = os.getenv("MYSQL_DATABASE")
+    MYSQL_USERNAME = os.getenv("MYSQL_USERNAME")
+    MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
+    USERNAME = os.getenv("USERNAME")
+    PASSWORD = os.getenv("PASSWORD")
+    JWT_SECRET = os.getenv("JWT_SECRET")    
 else:
     with open("variables.txt", "r") as f:
         lines = f.readlines()
@@ -19,31 +37,96 @@ else:
         LASTFM_USERNAME = lines[1].strip().split('=')[1]
         MAIL_USERNAME = lines[2].strip().split('=')[1]
         MAIL_PASSWORD = lines[3].split('=')[1]
+        MYSQL_HOST = lines[4].strip().split('=')[1]
+        MYSQL_DATABASE = lines[5].strip().split('=')[1]
+        MYSQL_USERNAME = lines[6].strip().split('=')[1]
+        MYSQL_PASSWORD = lines[7].strip().split('=')[1]
+        JWT_SECRET = lines[8].strip().split('=')[1]
 
+app = Flask(__name__) # Set up Flask app
 
+# JWT Configuration
+app.config["JWT_SECRET_KEY"] = JWT_SECRET
+app.config["JWT_TOKEN_LOCATION"] = ["cookies"]
+app.config["JWT_ACCESS_COOKIE_PATH"] = "/"
+app.config["JWT_COOKIE_CSRF_PROTECT"] = DEVELOPMENT != "TRUE"  # Enable True in production
+app.config["JWT_COOKIE_HTTPONLY"] = True
+app.config["JWT_COOKIE_SECURE"] = DEVELOPMENT != "TRUE"  # Enable True in production
+app.config["JWT_COOKIE_SAMESITE"] = "Lax"
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
+jwt = JWTManager(app)
+
+# Flask Mail Configuration
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 465
 app.config["MAIL_USERNAME"] = MAIL_USERNAME
 app.config["MAIL_PASSWORD"] = MAIL_PASSWORD
 app.config["MAIL_USE_TLS"] = False
 app.config["MAIL_USE_SSL"] = True
-
 mail = Mail(app)
-CORS(app)
 
-if not dev:
-    LASTFM_API_KEY = os.getenv("LASTFM_API_KEY")
-    LASTFM_USERNAME = os.getenv("LASTFM_USERNAME")
-else:
-    with open("variables.txt", "r") as f:
-        lines = f.readlines()
-        LASTFM_API_KEY = lines[0].strip().split('=')[1]
-        LASTFM_USERNAME = lines[1].strip().split('=')[1]
+# CORS Configuration
+if DEVELOPMENT == "TRUE":
+    CORS(app, supports_credentials=True, origins=["http://localhost:3000"])
 
+####################################################################
+#                           JWT Authentication                     #
+####################################################################
+def jwt_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        try:
+            verify_jwt_in_request() 
+            identity = get_jwt_identity()
+            username = identity.split("+")[0]
+            permission_level = int(identity.split("+")[1])
+        except Exception as e:
+            return jsonify({"message": "Missing or invalid token"}), 401
+
+        # Pass username and permission_level to the route
+        return f(username=username, permission_level=permission_level, *args, **kwargs)
+    return decorated
+
+####################################################################
+#                           Non-JWT Routes                         #
+####################################################################
+
+# Health Check
 @app.route('/api/health')
 def health_check():
     return jsonify({"status": "ok"}), 200
 
+# User Login
+@app.route('/api/auth/login', methods=['POST'])
+def login():
+    data = request.json
+    connection = pymysql.connect(
+        host=MYSQL_HOST,
+        user=MYSQL_USERNAME,
+        password=MYSQL_PASSWORD,
+        database=MYSQL_DATABASE
+    )
+    cursor = connection.cursor()
+    cursor.execute("SELECT permission_level FROM users " \
+    "WHERE username=%s AND password=%s", (data.get('username'), data.get('password')))
+    result = cursor.fetchone()
+    cursor.close()
+    connection.close()
+
+    permission_level = int(result[0]) if result else None
+
+    if permission_level is None:
+        return jsonify({"message": "Invalid credentials", "auth": False})
+
+    # USING FLASK JWT EXTENDED IMPLEMENT TOKEN AND COOKIE FOR AUTHENTICATION
+    access_token = create_access_token(identity=f"{data.get('username')}+{permission_level}")
+   
+    response = jsonify({"message": "Login successful!", "auth": True})
+
+    set_access_cookies(response, access_token, max_age=3600)
+    return response
+
+# Recent Tracks
 @app.route('/api/recent-tracks')
 def recent_tracks():
     
@@ -69,6 +152,7 @@ def recent_tracks():
 
     return jsonify(tracks)
 
+# Search YouTube
 @app.route('/api/search-youtube')
 def search_youtube():
     query = request.args.get("query")
@@ -83,6 +167,7 @@ def search_youtube():
 
     return jsonify({"error": "No video found"}), 404
 
+# Send Email
 @app.route('/api/send-email', methods=['POST'])
 def send_email():
     data = request.json
@@ -96,14 +181,13 @@ def send_email():
     # Compose email
     msg = Message(subject=f"New message from {name}",
                   sender=app.config['MAIL_USERNAME'],
-                  recipients=[app.config['MAIL_USERNAME']])  # send to yourself
+                  recipients=[app.config['MAIL_USERNAME']]) 
     msg.body = f"""
     You have received a new message from your portfolio contact form:
 
     Name: {name}
     Email: {email}
-    Message: 
-    {message}
+    Message: {message}
     """
 
     try:
@@ -113,6 +197,23 @@ def send_email():
         print(e)
         return jsonify({'error': 'Failed to send email'}), 500
 
-# if __name__ == "__main__":
-#     app.run(host="0.0.0.0", port=5000)
+###########################################################################
+#                          JWT Authentication Routes                      #             
+###########################################################################
+@app.route('/api/user/whoami', methods=['GET'])
+@jwt_required
+def whoami(username, permission_level):
+    return jsonify({"user": username, "permission_level": permission_level}), 200
+
+@app.route('/api/auth/logout', methods=['POST'])
+@jwt_required
+def logout():
+    #clear cookies
+    response = jsonify({"msg": "Successfully logged out"})
+    unset_jwt_cookies(response)
+    return response
+
+
+if DEVELOPMENT == "TRUE":
+    app.run(host="0.0.0.0", port=5000)
 
