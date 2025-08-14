@@ -12,7 +12,8 @@ import Projects from './pages/Projects.tsx'
 import Resume from './pages/Resume.tsx'
 import Contact from './pages/Contact.tsx'
 import Login from './pages/Login.tsx';
-import Forbidden from './pages/Forbidden.tsx';
+import Errors from './pages/Errors.tsx';
+import Admin from './pages/Admin.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -24,7 +25,9 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/resume" element={<Resume />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
-  <Route path="/forbidden" element={<Forbidden />} />
+	      <Route path="/forbidden" element={<Errors statusCode={403} />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="*" element={<Errors statusCode={404} />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

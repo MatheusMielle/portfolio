@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import "../styles/Navbar.css";
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  permissionLevel?: number | null;
+  logout?: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ permissionLevel, logout }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -59,7 +64,7 @@ const Navbar: React.FC = () => {
           </span>
           <span className="nav-link-text">Contact</span>
         </a>
-        {/* {permissionLevel != null && (
+        {permissionLevel != null && logout && (
           <button
             type="button"
             onClick={() => {
@@ -73,8 +78,7 @@ const Navbar: React.FC = () => {
             </span>
             <span className="nav-link-text">Logout</span>
           </button>
-        )} */}
-
+        )}
       </nav>
     </header>
   );

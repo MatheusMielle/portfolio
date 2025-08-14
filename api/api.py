@@ -80,12 +80,22 @@ def jwt_required(f):
             identity = get_jwt_identity()
             username = identity.split("+")[0]
             permission_level = int(identity.split("+")[1])
+
+            if permission_level != 0:
+                return jsonify({"message": "Forbidden: insufficient permissions"}), 403
+            
         except Exception as e:
             return jsonify({"message": "Missing or invalid token"}), 401
 
-        # Pass username and permission_level to the route
-        return f(username=username, permission_level=permission_level, *args, **kwargs)
+        func_params = f.__code__.co_varnames
+        if 'username' in func_params:
+            kwargs['username'] = username
+        if 'permission_level' in func_params:
+            kwargs['permission_level'] = permission_level
+
+        return f(*args, **kwargs)
     return decorated
+
 
 ####################################################################
 #                           Non-JWT Routes                         #
@@ -117,6 +127,13 @@ def login():
 
     if permission_level is None:
         return jsonify({"message": "Invalid credentials", "auth": False})
+
+    #     # NO DB MOCK
+    # data = {
+    #     "username": "admin",
+    #     "password": "password"
+    # }
+    # permission_level = 1
 
     # USING FLASK JWT EXTENDED IMPLEMENT TOKEN AND COOKIE FOR AUTHENTICATION
     access_token = create_access_token(identity=f"{data.get('username')}+{permission_level}")
@@ -208,10 +225,14 @@ def whoami(username, permission_level):
 @app.route('/api/auth/logout', methods=['POST'])
 @jwt_required
 def logout():
-    #clear cookies
-    response = jsonify({"msg": "Successfully logged out"})
-    unset_jwt_cookies(response)
-    return response
+    try:
+        response = jsonify({"message": "Logout successful!"})
+        unset_jwt_cookies(response)
+        return response, 200
+    except Exception as e:
+        # Log the error if you want for debugging
+        print(f"Logout error: {str(e)}")
+        return jsonify({"message": "Logout failed", "error": str(e)}), 500
 
 
 if DEVELOPMENT == "TRUE":

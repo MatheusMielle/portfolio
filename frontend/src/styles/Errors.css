@@ -1,5 +1,5 @@
-/* Forbidden (403) Page Styles */
-.forbidden-page {
+/* Shared Error Page Styles (403 / 404) */
+.error-page { /* page wrapper */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
   color: #fff;
 }
 
-.forbidden-main { 
+.error-main { 
   flex: 1; 
   display: flex; 
   align-items: center; 
@@ -16,7 +16,7 @@
   padding: 120px 20px 60px; /* space for fixed navbar/footer */
 }
 
-.forbidden-card {
+.error-card {
   background: #3e060d95;
   border-radius: 1.25rem;
   padding: 3rem 2.5rem 2.8rem;
@@ -39,27 +39,27 @@
   letter-spacing: 2px;
 }
 
-.forbidden-title { 
+.error-title { 
   font-size: 2rem; 
   margin: 0 0 .75rem; 
   letter-spacing: 1px; 
 }
 
-.forbidden-text { 
+.error-text { 
   font-size: 1rem; 
   color: #d3c9ca; 
   margin: 0 0 1.75rem; 
   line-height: 1.5; 
 }
 
-.forbidden-actions { 
+.error-actions { 
   display: flex; 
   gap: .85rem; 
   flex-wrap: wrap; 
   justify-content: center; 
 }
 
-.forbidden-btn { 
+.error-btn { 
   display: inline-flex; 
   align-items: center; 
   gap: .5rem; 
@@ -75,18 +75,19 @@
   transition: background-color .25s, transform .18s ease; 
 }
 
-.forbidden-btn.primary { background: #841c28; }
-.forbidden-btn.secondary { background: #3d0d12; }
+/* button variants */
+.error-btn.primary { background: #841c28; }
+.error-btn.secondary { background: #3d0d12; }
 
-.forbidden-btn:hover { transform: translateY(-2px); }
-.forbidden-btn.primary:hover { background: #a32838; }
-.forbidden-btn.secondary:hover { background: #551820; }
-.forbidden-btn:active { transform: translateY(0); }
+.error-btn:hover { transform: translateY(-2px); }
+.error-btn.primary:hover { background: #a32838; }
+.error-btn.secondary:hover { background: #551820; }
+.error-btn:active { transform: translateY(0); }
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
 
 @media (max-width: 560px) {
   .status-code { font-size: 3.6rem; }
-  .forbidden-card { padding: 2.3rem 1.7rem 2.1rem; }
-  .forbidden-title { font-size: 1.6rem; }
+  .error-card { padding: 2.3rem 1.7rem 2.1rem; }
+  .error-title { font-size: 1.6rem; }
 }
