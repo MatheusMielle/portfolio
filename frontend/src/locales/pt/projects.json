@@ -1,0 +1,85 @@
+{
+  "title": "Projetos",
+  "items": [
+    {
+      "name": "Este Portfólio",
+      "image": "/images/portfolio.png",
+      "description": "Um site de portfólio pessoal apresentando projetos, experiências e habilidades em um formato interativo e responsivo.",
+      "github": "https://github.com/MatheusMielle/portfolio",
+      "demo": "/",
+      "tech": [
+        { "name": "React", "icon": "FaReact" },
+        { "name": "TypeScript", "icon": "SiTypescript" },
+        { "name": "Python - Flask", "icon": "FaPython" },
+        { "name": "JWT", "icon": "SiJsonwebtokens" },
+        { "name": "NGINX", "icon": "SiNginx" },
+        { "name": "Raspberry Pi", "icon": "SiRaspberrypi" },
+        { "name": "Docker", "icon": "FaDocker" }
+      ]
+    },
+    {
+      "name": "NavigateCity.com",
+      "image": "/images/navigate.png",
+      "description": "Um aplicativo web moderno que ajuda viajantes a explorar cidades ao redor do mundo, com informações detalhadas sobre museus, restaurantes, parques, pontos turísticos e culinária local.",
+      "github": "https://github.com/MatheusMielle/NavigateCity",
+      "demo": "/navigatecity",
+      "tech": [
+        { "name": "React", "icon": "FaReact" },
+        { "name": "TypeScript", "icon": "SiTypescript" },
+        { "name": "Python - Flask", "icon": "FaPython" },
+        { "name": "MySQL", "icon": "GrMysql" },
+        { "name": "Docker", "icon": "FaDocker" }
+      ]
+    },
+    {
+      "name": "Sistema de Banco de Dados PASS",
+      "image": "/images/placeholder.png",
+      "description": "Uma plataforma full-stack modernizada que simplifica o pedido de testes, registro de pontuações e gerenciamento de dados dos alunos, substituindo um sistema legado antigo por um fluxo de trabalho mais eficiente e seguro.",
+      "github": "",
+      "demo": "",
+      "tech": [
+        { "name": "React", "icon": "FaReact" },
+        { "name": "TypeScript", "icon": "SiTypescript" },
+        { "name": "ASP .NET", "icon": "FaDotNet" },
+        { "name": "C#", "icon": "TbBrandCSharp" },
+        { "name": "JWT", "icon": "SiJsonwebtokens" },
+        { "name": "MySQL", "icon": "GrMysql" },
+        { "name": "Docker", "icon": "FaDocker" }
+      ]
+    },
+    {
+      "name": "Jogo de Xadrez Conectado em Rede",
+      "image": "/images/placeholder.png",
+      "description": "Um projeto de jogo de xadrez em evolução que começou como uma versão local de console, evoluiu para um sistema multiplayer baseado em sockets e, finalmente, se tornou um aplicativo web escalável com interface moderna e suporte a WebSocket. (Em Desenvolvimento)",
+      "github": "https://github.com/MatheusMielle/ChessGame",
+      "demo": "",
+      "tech": [
+        { "name": "C++", "icon": "SiCplusplus" },
+        { "name": "WebSockets", "icon": "BsLink45Deg" }
+      ]
+    },
+    {
+      "name": "JunggleWordMania",
+      "image": "/images/placeholder.png",
+      "description": "Um jogo educacional multiplayer que ajuda estudantes a construir vocabulário através da decodificação de palavras, com criação de jogos em sala de aula, rankings e listas de palavras personalizadas para professores.",
+      "github": "https://github.com/MatheusMielle/JunggleWordMania",
+      "demo": "",
+      "tech": [
+        { "name": "Flask", "icon": "FaPython" },
+        { "name": "HTML", "icon": "FaJsSquare" },
+        { "name": "CSS", "icon": "SiBootstrap" },
+        { "name": "JavaScript", "icon": "FaJsSquare" },
+        { "name": "MySQL", "icon": "GrMysql" }
+      ]
+    },
+    {
+      "name": "Programa de Classificação de Artigos",
+      "image": "/images/placeholder.png",
+      "description": "Um programa que classifica artigos em categorias de Notícias, Esportes ou Culinária, analisando frequências de palavras e pontuando com base em conjuntos de dados treinados.",
+      "github": "https://github.com/MatheusMielle/ArticleClassifcation",
+      "demo": "",
+      "tech": [{ "name": "C++", "icon": "SiCplusplus" }]
+    }
+  ],
+  "try": "Experimente"
+}

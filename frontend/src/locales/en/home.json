@@ -1,0 +1,11 @@
+{
+  "home-main": {
+    "headline": "Welcome!",
+    "name": "I'm Matheus.",
+    "subtitle": "Feel free to scroll through the music that fuels my focus."
+  },
+  "track-widget": {
+    "title": "Currently Listening",
+    "back": "Back"
+  }
+}

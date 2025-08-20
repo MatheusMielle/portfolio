@@ -3,6 +3,8 @@ import "../styles/About.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ResumeWidget from "../components/ResumeWidget";
+import { useTranslationSync } from "../hooks/useTranslationSync";
+import DOMPurify from "dompurify";
 
 import {
   FaJava,
@@ -30,68 +32,39 @@ import { GrMysql } from "react-icons/gr";
 import { BiLogoVisualStudio } from "react-icons/bi";
 
 const About: React.FC = () => {
+  const { t } = useTranslationSync("about");
+
+  const aboutItems = t("items", { returnObjects: true }) as string[];
+  const techItems = t("tech.items", { returnObjects: true }) as string[];
+
   return (
     <>
       <Navbar />
       <div className="about-container">
         <div className="about-main">
           <section className="about-section">
-            <h1 className="section-title">About Me</h1>
-            <p className="about-text">
-              <>
-                Hey! I’m <strong>Matheus Mielle Silva</strong> — a passionate
-                developer originally from Belo Horizonte, Brazil, now based in
-                Spokane, WA. I speak both Portuguese and English fluently, and I
-                recently graduated with a{" "}
-                <strong>Bachelor’s in Computer Science</strong> from{" "}
-                <strong>Whitworth University</strong>.
-                <br />
-                <br />
-                This past summer, I interned as a{" "}
-                <strong>Software Development Engineer at Amazon</strong>, where
-                I worked on enhancing the cancellation experience for the
-                Digital Subscriptions team — building UI components, integrating
-                feedback flows, and writing tests to ensure a smooth user
-                experience. Before that, I helped build a research system using
-                Raspberry Pi and custom PCBs for an environmental study project
-                at <strong>Whitworth University</strong>, in partnership with{" "}
-                <strong>Gonzaga University</strong> and{" "}
-                <strong>Oregon State University</strong>.
-                <br />
-                <br />
-                I’ve also worked on a variety of personal and academic projects
-                — from modernizing legacy systems to building networked games
-                and full-stack applications. You can check some of those out on
-                the{" "}
-                <a href="/projects" className="about-link">
-                  <strong>projects tab</strong>
-                </a>
-                .
-                <br />
-                <br />
-                Outside of tech, you’ll probably find me weightlifting at the
-                gym, listening to rock or metal, playing video games, or
-                watching Star Wars, Marvel, and other movies and shows. Fun
-                fact: this very website is self-hosted on a Raspberry Pi in my
-                house in Spokane.
-                <br />
-                <br />
-                Always open to good conversations, tech collaborations, or music
-                recommendations. Let’s connect!
-              </>
-            </p>
+            <h1 className="section-title">{t("title")}</h1>
 
-            <a href="/resume.pdf" className="download-resume-btn" download>
-              <i className="bi bi-download"></i> Download Resume
+            {aboutItems.map((item, idx) => (
+              <p
+                key={idx}
+                className="about-text"
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(item) }}
+              />
+            ))}
+
+            <a href={t("resume.link")} className="download-resume-btn" download>
+              <i className="bi bi-download"></i> {t("resume.text")}
             </a>
 
             <section className="tech-section">
-              <h1 className="section-title">Tech Stack</h1>
+              <h1 className="section-title">{t("tech.title")}</h1>
 
               <div className="tech-section">
+
                 {/* Languages */}
                 <div className="tech-category">
-                  <h2>Languages</h2>
+                  <h2>{techItems[0]}</h2>
                   <ul className="tech-list">
                     <li>
                       <SiCplusplus />
@@ -126,7 +99,7 @@ const About: React.FC = () => {
 
                 {/* Frameworks & Libraries */}
                 <div className="tech-category">
-                  <h2>Frameworks & Libraries</h2>
+                  <h2>{techItems[1]}</h2>
                   <ul className="tech-list">
                     <li>
                       <DiDotnet />
@@ -161,7 +134,7 @@ const About: React.FC = () => {
 
                 {/* Dev Tools */}
                 <div className="tech-category">
-                  <h2>Dev Tools</h2>
+                  <h2>{techItems[2]}</h2>
                   <ul className="tech-list">
                     <li>
                       <FaGitAlt />

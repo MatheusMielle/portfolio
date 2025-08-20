@@ -1,0 +1,72 @@
+{
+  "title": "Sobre Mí",
+  "items": [
+    "¡Hola! Soy <strong>Matheus Mielle Silva</strong> — un desarrollador apasionado originario de Belo Horizonte, Brasil, ahora radicado en Spokane, WA. Hablo portugués e inglés con fluidez, y recientemente me gradué con una <strong>Licenciatura en Ciencias de la Computación</strong> de la <strong>Whitworth University</strong>.",
+    "El verano pasado, fui pasante como <strong>Ingeniero de Desarrollo de Software en Amazon</strong>, donde trabajé en mejorar la experiencia de cancelación para el equipo de Suscripciones Digitales — construyendo componentes de interfaz de usuario, integrando flujos de retroalimentación y escribiendo pruebas para asegurar una experiencia de usuario fluida. Antes de eso, ayudé a construir un sistema de investigación utilizando Raspberry Pi y PCBs personalizadas para un proyecto de estudio ambiental en la <strong>Whitworth University</strong>, en asociación con la <strong>Gonzaga University</strong> y la <strong>Oregon State University</strong>.",
+    "También he trabajado en una variedad de proyectos personales y académicos — desde la modernización de sistemas heredados hasta la creación de juegos en red y aplicaciones de pila completa. Puedes ver algunos de ellos en la <a href='/projects'><strong>pestaña de proyectos</strong></a>.",
+    "Fuera de la tecnología, probablemente me encontrarás levantando pesas en el gimnasio, escuchando rock o metal, jugando videojuegos o viendo Star Wars, Marvel y otras películas y series. Dato curioso: este mismo sitio web está autoalojado en una Raspberry Pi en mi casa en Spokane.",
+    "Siempre abierto a buenas conversaciones, colaboraciones tecnológicas o recomendaciones musicales. ¡Conectemos!"
+  ],
+  "resume": {
+    "text": "Descargar Currículum",
+    "link": "/resume.pdf"
+  },
+  "tech": {
+    "title": "Pila Tecnológica",
+    "items": ["Lenguajes de Programación", "Marcos y Librerías", "Herramientas de Desarrollo"]
+  },
+  "education": {
+    "title": "Educación",
+    "items": [
+      {
+        "university": "Whitworth University",
+        "degree": "Licenciatura en Ciencias de la Computación",
+        "dates": "Septiembre 2021 – Mayo 2025",
+        "gpa": "3.6/4.0",
+        "awards": ["Premio Departamental de Ciencias de la Computación | 2022-2023, 2023-2024"]
+      }
+    ]
+  },
+  "experience": {
+    "title": "Experiencia",
+    "items": [
+      {
+        "title": "Pasante de Ingeniero de Desarrollo de Software",
+        "company": "Amazon",
+        "location": "Seattle, WA",
+        "dates": "Junio 2024 – Agosto 2024",
+        "description": [
+          "Desarrollé un nuevo flujo de cancelación para el equipo de Suscripciones Digitales de Amazon para mejorar la experiencia del usuario",
+          "Diseñé e implementé widgets de interfaz de usuario intuitivos para guiar a los clientes a través de un proceso de cancelación fluido e informativo",
+          "Creé una página dedicada para que los usuarios proporcionaran comentarios y compartieran sus razones para cancelar la suscripción",
+          "Desarrollé pruebas unitarias y de integración para asegurar la fiabilidad y eficiencia del flujo de cancelación"
+        ]
+      },
+      {
+        "title": "Investigador Estudiantil de Verano",
+        "company": "Whitworth University",
+        "location": "Spokane, WA",
+        "dates": "Mayo 2023 – Julio 2023",
+        "description": [
+          "Ayudé a desarrollar y ensamblar un sistema que potenció la investigación ambiental",
+          "Utilicé Python para interactuar con Raspberry PI que controlaban el sistema",
+          "Diseñé PCBs para organizar mejor el sistema",
+          "Presupuesté y diseñé otras opciones de sistema, centrándome en el costo, la eficiencia y la escalabilidad",
+          "Ayudé a ensamblar y probar el diseño en la Oregon State University"
+        ]
+      },
+      {
+        "title": "Asistente de Residencia",
+        "company": "Whitworth University",
+        "location": "Spokane, WA",
+        "dates": "Agosto 2022 – Mayo 2023",
+        "description": [
+          "Construí y fomenté relaciones con aproximadamente 50 residentes",
+          "Asesoré y aconsejé a estudiantes de primer año sobre preocupaciones académicas y personales",
+          "Desarrollé y dirigí eventos que promovieron la comunidad, la diversidad cultural y el pensamiento crítico",
+          "Gestioné tareas administrativas: presupuestos, solicitudes de mantenimiento, informes de incidentes y traslados de habitaciones"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Contato",
+  "form": {
+    "name": "Seu Nome",
+    "email": "Seu Email",
+    "message": "Sua Mensagem",
+    "submit": "Enviar Mensagem",
+    "new": "Enviar Outra Mensagem"
+  },
+  "connect": "Conecte-se Comigo",
+  "output": {
+    "success": "Mensagem enviada com sucesso!",
+    "error": "Falha ao enviar mensagem.",
+    "network_error": "Erro de rede. Tente novamente mais tarde.",
+    "loading": "Enviando..."
+  }
+}

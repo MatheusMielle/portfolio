@@ -11,6 +11,7 @@ from flask_jwt_extended import JWTManager, create_access_token, set_access_cooki
 import pymysql
 from datetime import timedelta
 from functools import wraps
+from dotenv import load_dotenv
 
 
 ######################################################################
@@ -18,30 +19,20 @@ from functools import wraps
 ######################################################################
 DEVELOPMENT = os.getenv("DEVELOPMENT", "TRUE")
 
-if os.getenv("DEVELOPMENT") == "FALSE":
-    LASTFM_API_KEY = os.getenv("LASTFM_API_KEY")
-    LASTFM_USERNAME = os.getenv("LASTFM_USERNAME")
-    MAIL_USERNAME = os.getenv("MAIL_USERNAME")
-    MAIL_PASSWORD = os.getenv("MAIL_PASSWORD")
-    MYSQL_HOST = os.getenv("MYSQL_HOST")
-    MYSQL_DATABASE = os.getenv("MYSQL_DATABASE")
-    MYSQL_USERNAME = os.getenv("MYSQL_USERNAME")
-    MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
-    USERNAME = os.getenv("USERNAME")
-    PASSWORD = os.getenv("PASSWORD")
-    JWT_SECRET = os.getenv("JWT_SECRET")    
-else:
-    with open("variables.txt", "r") as f:
-        lines = f.readlines()
-        LASTFM_API_KEY = lines[0].strip().split('=')[1]
-        LASTFM_USERNAME = lines[1].strip().split('=')[1]
-        MAIL_USERNAME = lines[2].strip().split('=')[1]
-        MAIL_PASSWORD = lines[3].split('=')[1]
-        MYSQL_HOST = lines[4].strip().split('=')[1]
-        MYSQL_DATABASE = lines[5].strip().split('=')[1]
-        MYSQL_USERNAME = lines[6].strip().split('=')[1]
-        MYSQL_PASSWORD = lines[7].strip().split('=')[1]
-        JWT_SECRET = lines[8].strip().split('=')[1]
+if DEVELOPMENT == "TRUE":
+    load_dotenv(dotenv_path="variables.txt")
+
+LASTFM_API_KEY = os.getenv("LASTFM_API_KEY")
+LASTFM_USERNAME = os.getenv("LASTFM_USERNAME")
+MAIL_USERNAME = os.getenv("MAIL_USERNAME")
+MAIL_PASSWORD = os.getenv("MAIL_PASSWORD")
+MYSQL_HOST = os.getenv("MYSQL_HOST")
+MYSQL_DATABASE = os.getenv("MYSQL_DATABASE")
+MYSQL_USERNAME = os.getenv("MYSQL_USERNAME")
+MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
+USERNAME = os.getenv("USERNAME")
+PASSWORD = os.getenv("PASSWORD")
+JWT_SECRET = os.getenv("JWT_SECRET")    
 
 app = Flask(__name__) # Set up Flask app
 
@@ -128,14 +119,6 @@ def login():
     if permission_level is None:
         return jsonify({"message": "Invalid credentials", "auth": False})
 
-    #     # NO DB MOCK
-    # data = {
-    #     "username": "admin",
-    #     "password": "password"
-    # }
-    # permission_level = 1
-
-    # USING FLASK JWT EXTENDED IMPLEMENT TOKEN AND COOKIE FOR AUTHENTICATION
     access_token = create_access_token(identity=f"{data.get('username')}+{permission_level}")
    
     response = jsonify({"message": "Login successful!", "auth": True})
@@ -233,6 +216,10 @@ def logout():
         # Log the error if you want for debugging
         print(f"Logout error: {str(e)}")
         return jsonify({"message": "Logout failed", "error": str(e)}), 500
+    
+
+    
+
 
 
 if DEVELOPMENT == "TRUE":

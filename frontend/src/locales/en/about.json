@@ -1,0 +1,72 @@
+{
+  "title": "About Me",
+  "items": [
+    "Hey! I’m <strong>Matheus Mielle Silva</strong> — a passionate developer originally from Belo Horizonte, Brazil, now based in Spokane, WA. I speak both Portuguese and English fluently, and I recently graduated with a <strong>Bachelor’s in Computer Science</strong> from <strong>Whitworth University</strong>.",
+    "This past summer, I interned as a <strong>Software Development Engineer at Amazon</strong>, where I worked on enhancing the cancellation experience for the Digital Subscriptions team — building UI components, integrating feedback flows, and writing tests to ensure a smooth user experience. Before that, I helped build a research system using Raspberry Pi and custom PCBs for an environmental study project at <strong>Whitworth University</strong>, in partnership with <strong>Gonzaga University</strong> and <strong>Oregon State University</strong>.",
+    "I’ve also worked on a variety of personal and academic projects — from modernizing legacy systems to building networked games and full-stack applications. You can check some of those out on the <a href='/projects'><strong>projects tab</strong></a>.",
+    "Outside of tech, you’ll probably find me weightlifting at the gym, listening to rock or metal, playing video games, or watching Star Wars, Marvel, and other movies and shows. Fun fact: this very website is self-hosted on a Raspberry Pi in my house in Spokane.",
+    "Always open to good conversations, tech collaborations, or music recommendations. Let’s connect!"
+  ],
+  "resume": {
+    "text": "Download Resume",
+    "link": "/resume.pdf"
+  },
+  "tech": {
+    "title": "Tech Stack",
+    "items": ["Programming Languages", "Frameworks & Libraries", "Dev Tools"]
+  },
+  "education": {
+    "title": "Education",
+    "items": [
+      {
+        "university": "Whitworth University",
+        "degree": "BS in Computer Science",
+        "dates": "September 2021 – May 2025",
+        "gpa": "3.6/4.0",
+        "awards": ["Computer Science Departmental Award | 2022-2023, 2023-2024"]
+      }
+    ]
+  },
+  "experience": {
+    "title": "Experience",
+    "items": [
+      {
+        "title": "Software Development Engineer Intern",
+        "company": "Amazon",
+        "location": "Seattle, WA",
+        "dates": "June 2024 – Aug 2024",
+        "description": [
+          "Developed a new cancellation flow for the Amazon Digital Subscriptions team to enhance user experience",
+          "Designed and implemented intuitive UI widgets to guide customers through a seamless and informative cancellation process",
+          "Created a dedicated page for users to provide feedback and share their reasons for canceling the subscription",
+          "Developed unit and integration tests to ensure the reliability and efficiency of the cancellation flow"
+        ]
+      },
+      {
+        "title": "Summer Student Researcher",
+        "company": "Whitworth University",
+        "location": "Spokane, WA",
+        "dates": "May 2023 – July 2023",
+        "description": [
+          "Helped develop and assemble a system that empowered environmental research",
+          "Used Python to interface with Raspberry PI’s controlling the system",
+          "Designed PCBs to better organize the system",
+          "Budgeted and designed other system options, focusing on cost, efficiency, and scalability",
+          "Helped to assemble and test the design at Oregon State University"
+        ]
+      },
+      {
+        "title": "Resident Assistant",
+        "company": "Whitworth University",
+        "location": "Spokane, WA",
+        "dates": "August 2022 – May 2023",
+        "description": [
+          "Built and fostered relationships with about 50 residents",
+          "Counseled and advised first-year students on academic and personal concerns",
+          "Developed and led events that promoted community, cultural diversity, and critical thinking",
+          "Managed administrative duties: budgeting, maintenance requests, incident reports, and room transfers"
+        ]
+      }
+    ]
+  }
+}
