@@ -126,6 +126,18 @@ def login():
     set_access_cookies(response, access_token, max_age=3600)
     return response
 
+# Logout
+@app.route('/api/auth/logout', methods=['POST'])
+def logout():
+    try:
+        response = jsonify({"message": "Logout successful!"})
+        unset_jwt_cookies(response)
+        return response, 200
+    except Exception as e:
+        # Log the error if you want for debugging
+        print(f"Logout error: {str(e)}")
+        return jsonify({"message": "Logout failed", "error": str(e)}), 500
+
 # Recent Tracks
 @app.route('/api/recent-tracks')
 def recent_tracks():
@@ -204,18 +216,6 @@ def send_email():
 @jwt_required
 def whoami(username, permission_level):
     return jsonify({"user": username, "permission_level": permission_level}), 200
-
-@app.route('/api/auth/logout', methods=['POST'])
-@jwt_required
-def logout():
-    try:
-        response = jsonify({"message": "Logout successful!"})
-        unset_jwt_cookies(response)
-        return response, 200
-    except Exception as e:
-        # Log the error if you want for debugging
-        print(f"Logout error: {str(e)}")
-        return jsonify({"message": "Logout failed", "error": str(e)}), 500
     
 
     
