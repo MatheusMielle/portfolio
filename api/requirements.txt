@@ -1,7 +1,9 @@
 Flask
 requests
-gunicorn
-flask_mail
+urllib3
 flask-cors
-pymysql
-flask_jwt_extended
+Flask-Mail
+Flask-JWT-Extended
+PyMySQL
+python-dotenv
+
