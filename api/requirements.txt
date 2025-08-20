@@ -1,7 +1,8 @@
 Flask
+Flask-Cors
+Flask-Mail
+Flask-JWT-Extended
+PyMySQL
 requests
+python-dotenv
 gunicorn
-flask_mail
-flask-cors
-pymysql
-flask_jwt_extended
