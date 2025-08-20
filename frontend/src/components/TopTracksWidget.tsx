@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "../styles/TopTracksWidget.css"; // See CSS below
+import "../styles/TopTracksWidget.css";
+import { useTranslationSync } from "../hooks/useTranslationSync";
 
 interface Track {
   album: string;
@@ -10,6 +11,8 @@ interface Track {
 }
 
 const TopTracksWidget: React.FC = () => {
+  const { t } = useTranslationSync("home");
+
   const [tracks, setTracks] = useState<Track[]>([]);
   const [playingTrack, setPlayingTrack] = useState<Track | null>(null);
   const [youtubeUrl, setYoutubeUrl] = useState<string>("");
@@ -42,7 +45,7 @@ const TopTracksWidget: React.FC = () => {
     return (
       <div className="top-tracks-widget video-mode">
         <button className="back-btn" onClick={handleBack}>
-          <i className="bi bi-arrow-left"></i> Back
+          <i className="bi bi-arrow-left"></i> {t("track-widget.back")}
         </button>
         <div className="youtube-embed">
           <iframe
@@ -61,7 +64,7 @@ const TopTracksWidget: React.FC = () => {
 
   return (
     <div className="top-tracks-widget">
-      <h3>Currently Listening</h3>
+      <h3>{t("track-widget.title")}</h3>
       <ul className="track-list">
         {tracks.map((track, index) => (
           <li className="track-card" key={index} onClick={() => handlePlay(track)} style={{ cursor: "pointer" }}>

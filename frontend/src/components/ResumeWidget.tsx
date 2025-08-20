@@ -1,27 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../styles/ResumeWidget.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
-
-interface EducationEntry {
-  university: string;
-  degree: string;
-  dates: string;
-  gpa?: string;
-  awards?: string[];
-}
-
-interface ExperienceEntry {
-  title: string;
-  company: string;
-  location?: string;
-  dates: string;
-  description?: string[];
-}
-
-interface ResumeData {
-  education: EducationEntry[];
-  experience: ExperienceEntry[];
-}
+import { useTranslationSync } from "../hooks/useTranslationSync";
 
 const BulletPoint: React.FC<{ text: string }> = ({ text }) => {
   const [expanded, setExpanded] = useState(false);
@@ -43,30 +22,50 @@ const BulletPoint: React.FC<{ text: string }> = ({ text }) => {
   );
 };
 
+interface EducationItem {
+  university: string;
+  degree: string;
+  dates: string;
+  gpa?: string;
+  awards?: string[];
+}
+
+interface ExperienceItem {
+  title: string;
+  company: string;
+  location?: string;
+  dates: string;
+  description?: string[];
+}
+
 const ResumeWidget: React.FC = () => {
-  const [resume, setResume] = useState<ResumeData | null>(null);
+  const { t } = useTranslationSync("about");
 
-  useEffect(() => {
-    fetch("/resume.json")
-      .then((res) => res.json())
-      .then((data) => setResume(data))
-      .catch((err) => console.error("Failed to load resume:", err));
-  }, []);
+  const educationItems: EducationItem[] = t("education.items", {
+    returnObjects: true,
+  }) as EducationItem[];
 
-  if (!resume) return null;
+  const experienceItems: ExperienceItem[] = t("experience.items", {
+    returnObjects: true,
+  }) as ExperienceItem[];
 
   return (
     <div className="resume-widget">
       <div className="section-container">
-        <h1 className="section-title">Education</h1>
+        <h1 className="section-title">{t("education.title")}</h1>
         <div className="line-container">
-          {resume.education.map((edu, idx) => (
+          {educationItems.map((edu, idx) => (
             <div key={idx} className="job-container">
               <h3 className="job-title">
-                {edu.degree} <span className="company"> @ {edu.university}</span>
+                {edu.degree}{" "}
+                <span className="company"> - {edu.university}</span>
               </h3>
               <p className="job-dates">{edu.dates}</p>
-              {/* {edu.gpa && <p><strong>GPA:</strong> {edu.gpa}</p>}
+              {/* {edu.gpa && (
+                <p>
+                  <strong>GPA:</strong> {edu.gpa}
+                </p>
+              )}
               {edu.awards && (
                 <ul>
                   {edu.awards.map((award, i) => (
@@ -80,12 +79,13 @@ const ResumeWidget: React.FC = () => {
       </div>
 
       <div className="section-container">
-        <h1 className="section-title">Experience</h1>
+        <h1 className="section-title">{t("experience.title")}</h1>
         <div className="line-container">
-          {resume.experience.map((exp, idx) => (
+          {experienceItems.map((exp, idx) => (
             <div key={idx} className="job-container">
               <h3 className="job-title">
-                {exp.title} <span className="company"> @ {exp.company}</span>
+                {exp.title}
+                <span className="company"> - {exp.company}</span>
               </h3>
               <p className="job-dates">{exp.dates}</p>
               {exp.description && (

@@ -1,0 +1,85 @@
+{
+  "title": "Projects",
+  "items": [
+    {
+      "name": "This Portfolio",
+      "image": "/images/portfolio.png",
+      "description": "A personal portfolio website showcasing projects, experience, and skills in an interactive and responsive format.",
+      "github": "https://github.com/MatheusMielle/portfolio",
+      "demo": "/",
+      "tech": [
+        { "name": "React", "icon": "FaReact" },
+        { "name": "TypeScript", "icon": "SiTypescript" },
+        { "name": "Python - Flask", "icon": "FaPython" },
+        { "name": "JWT", "icon": "SiJsonwebtokens" },
+        { "name": "NGINX", "icon": "SiNginx" },
+        { "name": "Raspberry Pi", "icon": "SiRaspberrypi" },
+        { "name": "Docker", "icon": "FaDocker" }
+      ]
+    },
+    {
+      "name": "NavigateCity.com",
+      "image": "/images/navigate.png",
+      "description": "A modern web app that helps travelers explore cities worldwide with detailed information on museums, restaurants, parks, landmarks, and local cuisine.",
+      "github": "https://github.com/MatheusMielle/NavigateCity",
+      "demo": "/navigatecity",
+      "tech": [
+        { "name": "React", "icon": "FaReact" },
+        { "name": "TypeScript", "icon": "SiTypescript" },
+        { "name": "Python - Flask", "icon": "FaPython" },
+        { "name": "MySQL", "icon": "GrMysql" },
+        { "name": "Docker", "icon": "FaDocker" }
+      ]
+    },
+    {
+      "name": "PASS Database System",
+      "image": "/images/placeholder.png",
+      "description": "A modernized full-stack platform that streamlines test ordering, score logging, and student data management—replacing an outdated legacy system with a more efficient and secure workflow.",
+      "github": "",
+      "demo": "",
+      "tech": [
+        { "name": "React", "icon": "FaReact" },
+        { "name": "TypeScript", "icon": "SiTypescript" },
+        { "name": "ASP .NET", "icon": "FaDotNet" },
+        { "name": "C#", "icon": "TbBrandCSharp" },
+        { "name": "JWT", "icon": "SiJsonwebtokens" },
+        { "name": "MySQL", "icon": "GrMysql" },
+        { "name": "Docker", "icon": "FaDocker" }
+      ]
+    },
+    {
+      "name": "Network Connected Chess Game",
+      "image": "/images/placeholder.png",
+      "description": "An evolving chess game project that grew from a local console version into a socket-based multiplayer system, and finally into a scalable web-based app with modern UI and WebSocket support. (In Development)",
+      "github": "https://github.com/MatheusMielle/ChessGame",
+      "demo": "",
+      "tech": [
+        { "name": "C++", "icon": "SiCplusplus" },
+        { "name": "WebSockets", "icon": "BsLink45Deg" }
+      ]
+    },
+    {
+      "name": "JunggleWordMania",
+      "image": "/images/placeholder.png",
+      "description": "An educational multiplayer game that helps students build vocabulary by unscrambling words, featuring classroom game creation, leaderboards, and custom teacher word lists.",
+      "github": "https://github.com/MatheusMielle/JunggleWordMania",
+      "demo": "",
+      "tech": [
+        { "name": "Flask", "icon": "FaPython" },
+        { "name": "HTML", "icon": "FaJsSquare" },
+        { "name": "CSS", "icon": "SiBootstrap" },
+        { "name": "JavaScript", "icon": "FaJsSquare" },
+        { "name": "MySQL", "icon": "GrMysql" }
+      ]
+    },
+    {
+      "name": "Article Classification Program",
+      "image": "/images/placeholder.png",
+      "description": "A program that classifies articles into News, Sports, or Culinary categories by analyzing word frequencies and scoring against trained datasets.",
+      "github": "https://github.com/MatheusMielle/ArticleClassifcation",
+      "demo": "",
+      "tech": [{ "name": "C++", "icon": "SiCplusplus" }]
+    }
+  ],
+  "try": "Try it out"
+}

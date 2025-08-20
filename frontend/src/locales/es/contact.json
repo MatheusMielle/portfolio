@@ -1,0 +1,17 @@
+{
+  "title": "Contacto",
+  "form": {
+    "name": "Tu Nombre",
+    "email": "Tu Correo Electrónico",
+    "message": "Tu Mensaje",
+    "submit": "Enviar Mensaje",
+    "new": "Enviar Otro Mensaje"
+  },
+  "connect": "Conéctate Conmigo",
+  "output": {
+    "success": "¡Mensaje enviado con éxito!",
+    "error": "Error al enviar el mensaje.",
+    "network_error": "Error de red. Por favor, inténtalo de nuevo más tarde.",
+    "loading": "Enviando..."
+  }
+}

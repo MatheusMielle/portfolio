@@ -1,0 +1,78 @@
+{
+  "title": "Sobre Mim",
+  "items": [
+    "Oi! Eu sou <strong>Matheus Mielle Silva</strong> — um desenvolvedor apaixonado, originalmente de Belo Horizonte, Brasil, agora morando em Spokane, WA. Falo português e inglês fluentemente e recentemente me formei com um <strong>Bacharelado em Ciência da Computação</strong> pela <strong>Whitworth University</strong>.",
+    "No último verão, estagiei como <strong>Engenheiro de Desenvolvimento de Software na Amazon</strong>, onde trabalhei para melhorar a experiência de cancelamento da equipe de Assinaturas Digitais — construindo componentes de UI, integrando fluxos de feedback e escrevendo testes para garantir uma experiência de usuário tranquila. Antes disso, ajudei a construir um sistema de pesquisa usando Raspberry Pi e PCBs customizados para um projeto ambiental na <strong>Whitworth University</strong>, em parceria com a <strong>Gonzaga University</strong> e a <strong>Oregon State University</strong>.",
+    "Também trabalhei em diversos projetos pessoais e acadêmicos — desde modernizar sistemas legados até construir jogos em rede e aplicações full-stack. Você pode conferir alguns deles na <a href='/projects'><strong>aba de projetos</strong></a>.",
+    "Fora da tecnologia, provavelmente me encontrarána academia, ouvindo rock ou metal, jogando videogame ou assistindo Star Wars, Marvel e outros filmes e séries. Curiosidade: este próprio site é auto-hospedado em um Raspberry Pi na minha casa em Spokane.",
+    "Sempre aberto a boas conversas, colaborações ou recomendações musicais. Vamos conectar!"
+  ],
+  "resume": {
+    "text": "Baixar Currículo",
+    "link": "/resume.pdf"
+  },
+  "tech": {
+    "title": "Tecnologias",
+    "items": [
+      "Linguagens de Programação",
+      "Bibliotecas e Frameworks",
+      "Ferramentas de Desenvolvimento"
+    ]
+  },
+  "education": {
+    "title": "Educação",
+    "items": [
+      {
+        "university": "Whitworth University",
+        "degree": "Bacharelado em Ciência da Computação",
+        "dates": "September 2021 – May 2025",
+        "gpa": "3.6/4.0",
+        "awards": [
+          "Prêmio do Departamento de Ciência da Computação | 2022-2023, 2023-2024"
+        ]
+      }
+    ]
+  },
+  "experience": {
+    "title": "Experiência",
+    "items": [
+      {
+        "title": "Estagiário em Engenharia de Software",
+        "company": "Amazon",
+        "location": "Seattle, WA",
+        "dates": "June 2024 – Aug 2024",
+        "description": [
+          "Desenvolvi um novo fluxo de cancelamento para a equipe de Assinaturas Digitais da Amazon para melhorar a experiência do usuário",
+          "Projetei e implementei widgets de interface intuitivos para guiar clientes em um processo de cancelamento simples e informativo",
+          "Criei uma página dedicada para que os usuários pudessem fornecer feedback e compartilhar seus motivos para cancelar a assinatura",
+          "Desenvolvi testes unitários e de integração para garantir a confiabilidade e eficiência do fluxo de cancelamento"
+        ]
+      },
+      {
+        "title": "Pesquisador de Verão",
+        "company": "Whitworth University",
+        "location": "Spokane, WA",
+        "dates": "May 2023 – July 2023",
+        "description": [
+          "Ajudei a desenvolver e montar um sistema que apoiou pesquisas ambientais",
+          "Usei Python para interagir com Raspberry Pi’s controlando o sistema",
+          "Projetei PCBs para organizar melhor o sistema",
+          "Planejei e projetei outras opções de sistema, focando em custo, eficiência e escalabilidade",
+          "Ajudei a montar e testar o design na Oregon State University"
+        ]
+      },
+      {
+        "title": "Assistente Residencial",
+        "company": "Whitworth University",
+        "location": "Spokane, WA",
+        "dates": "August 2022 – May 2023",
+        "description": [
+          "Construí e mantive relacionamentos com cerca de 50 residentes",
+          "Aconselhei e ofereci suporte a estudantes do primeiro ano em questões acadêmicas e pessoais",
+          "Desenvolvi e liderei eventos que promoveram comunidade, diversidade cultural e pensamento crítico",
+          "Gerenciei tarefas administrativas: orçamento, solicitações de manutenção, relatórios de incidentes e transferências de quarto"
+        ]
+      }
+    ]
+  }
+}

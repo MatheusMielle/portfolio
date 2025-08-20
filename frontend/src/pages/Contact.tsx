@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import "../styles/Contact.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useTranslationSync } from "../hooks/useTranslationSync";
 
 const Contact: React.FC = () => {
+  const { t } = useTranslationSync("contact");
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -36,10 +39,10 @@ const Contact: React.FC = () => {
         setSubmitted(true);
         setFormData({ name: "", email: "", message: "" });
       } else {
-        setError(data.error || "Failed to send message");
+        setError(data.error || t("output.error"));
       }
     } catch (err) {
-      setError("Network error. Please try again later.");
+      setError(t("output.network_error"));
     } finally {
       setLoading(false);
     }
@@ -57,12 +60,12 @@ const Contact: React.FC = () => {
         <div className="form-section">
           {!submitted ? (
             <>
-              <h1 className="section-title">Contact</h1>
+              <h1 className="section-title">{t("title")}</h1>
               <form onSubmit={handleSubmit} className="contact-form">
                 <input
                   type="text"
                   name="name"
-                  placeholder="Your Name"
+                  placeholder={t("form.name")}
                   value={formData.name}
                   onChange={handleChange}
                   required
@@ -70,14 +73,14 @@ const Contact: React.FC = () => {
                 <input
                   type="email"
                   name="email"
-                  placeholder="Your Email"
+                  placeholder={t("form.email")}
                   value={formData.email}
                   onChange={handleChange}
                   required
                 />
                 <textarea
                   name="message"
-                  placeholder="Your Message"
+                  placeholder={t("form.message")}
                   rows={6}
                   value={formData.message}
                   onChange={handleChange}
@@ -85,22 +88,22 @@ const Contact: React.FC = () => {
                 />
                 {error && <p className="error-message">{error}</p>}
                 <button type="submit" className="submit-btn" disabled={loading}>
-                  {loading ? "Sending..." : "Send Message"}
+                  {loading ? t("output.loading") : t("form.submit")}
                 </button>
               </form>
             </>
           ) : (
             <div className="confirmation-message">
-              <h2>Message Sent Successfully!</h2>
+              <h2>{t("output.success")}</h2>
               <button onClick={resetForm} className="submit-btn">
-                Send Another Message
+                {t("form.new")}
               </button>
             </div>
           )}
         </div>
 
         <div className="social-section">
-          <h2>Connect With Me</h2>
+          <h2>{t("connect")}</h2>
           <div className="social-links">
             <a
               href="https://github.com/MatheusMielle"
