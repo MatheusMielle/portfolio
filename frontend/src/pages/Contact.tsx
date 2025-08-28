@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "../styles/Contact.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useTranslationSync } from "../hooks/useTranslationSync";
+import ReCAPTCHA from "react-google-recaptcha";
+
+const RECAPTCHA_SITE_KEY = "6LcsTq4rAAAAAJTE4MuWdjoeVjRzSTcBXxB7m2UE";
 
 const Contact: React.FC = () => {
+  const recaptcha = useRef<ReCAPTCHA | null>(null);
+
   const { t } = useTranslationSync("contact");
 
   const [formData, setFormData] = useState({
@@ -26,11 +31,20 @@ const Contact: React.FC = () => {
     setLoading(true);
     setError(null);
 
+    if (!recaptcha.current) {
+      setError("reCAPTCHA not loaded");
+      setLoading(false);
+      return;
+    }
+
+    const token = await recaptcha.current.executeAsync();
+    recaptcha.current.reset();
+
     try {
       const response = await fetch("/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, token }),
       });
 
       const data = await response.json();
@@ -90,6 +104,12 @@ const Contact: React.FC = () => {
                 <button type="submit" className="submit-btn" disabled={loading}>
                   {loading ? t("output.loading") : t("form.submit")}
                 </button>
+
+                <ReCAPTCHA
+                  sitekey={RECAPTCHA_SITE_KEY}
+                  size="invisible"
+                  ref={recaptcha}
+                />
               </form>
             </>
           ) : (

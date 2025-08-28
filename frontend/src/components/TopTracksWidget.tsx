@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import "../styles/TopTracksWidget.css";
 import { useTranslationSync } from "../hooks/useTranslationSync";
 
@@ -16,13 +16,27 @@ const TopTracksWidget: React.FC = () => {
   const [tracks, setTracks] = useState<Track[]>([]);
   const [playingTrack, setPlayingTrack] = useState<Track | null>(null);
   const [youtubeUrl, setYoutubeUrl] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchTracks = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const res = await fetch("/api/recent-tracks");
+      if (!res.ok) throw new Error(res.statusText || "Request failed");
+      const data = await res.json();
+      setTracks(Array.isArray(data) ? data.slice(0, 10) : []);
+    } catch (err: any) {
+      setError(err.message || "Failed to load tracks");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
-    fetch("/api/recent-tracks")
-      .then((res) => res.json())
-      .then((data) => setTracks(data.slice(0, 10)))
-      .catch((err) => console.error("Failed to load tracks:", err));
-  }, []);
+    fetchTracks();
+  }, [fetchTracks]);
 
   const handlePlay = async (track: Track) => {
     setPlayingTrack(track);
@@ -53,7 +67,6 @@ const TopTracksWidget: React.FC = () => {
             height="100%"
             src={youtubeUrl.replace("watch?v=", "embed/")}
             title={playingTrack.track}
-            frameBorder="0"
             allow="autoplay; encrypted-media"
             allowFullScreen
           />
@@ -65,21 +78,51 @@ const TopTracksWidget: React.FC = () => {
   return (
     <div className="top-tracks-widget">
       <h3>{t("track-widget.title")}</h3>
-      <ul className="track-list">
-        {tracks.map((track, index) => (
-          <li className="track-card" key={index} onClick={() => handlePlay(track)} style={{ cursor: "pointer" }}>
-            <img src={track.image} alt={track.track} className="track-art" />
-            <div className="track-meta">
-              <strong>{track.track}</strong>
-              <p>{track.artist}</p>
-              <p className="album">{track.album}</p>
-            </div>
-            <button className="play-btn" onClick={() => handlePlay(track)}>
-              <i className="bi bi-play-circle-fill"></i>
-            </button>
-          </li>
-        ))}
-      </ul>
+
+      {loading && (
+        <div className="tracks-loader" aria-live="polite">
+          <div className="spinner" />
+          <span className="loading-text">{t("track-widget.loading")}</span>
+        </div>
+      )}
+
+      {!loading && error && (
+        <div className="tracks-error" role="alert">
+          <i className="bi bi-exclamation-triangle-fill" /> {t("track-widget.error")}
+          <button className="retry-btn" onClick={fetchTracks}>
+            {t("track-widget.retry")}
+          </button>
+        </div>
+      )}
+
+      {!loading && !error && (
+        <ul className="track-list">
+          {tracks.map((track, index) => (
+            <li
+              className="track-card"
+              key={index}
+              onClick={() => handlePlay(track)}
+              style={{ cursor: "pointer" }}
+            >
+              <img src={track.image} alt={track.track} className="track-art" />
+              <div className="track-meta">
+                <strong>{track.track}</strong>
+                <p>{track.artist}</p>
+                <p className="album">{track.album}</p>
+              </div>
+              <button
+                className="play-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handlePlay(track);
+                }}
+              >
+                <i className="bi bi-play-circle-fill"></i>
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

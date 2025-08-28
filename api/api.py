@@ -32,7 +32,8 @@ MYSQL_USERNAME = os.getenv("MYSQL_USERNAME")
 MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
 USERNAME = os.getenv("USERNAME")
 PASSWORD = os.getenv("PASSWORD")
-JWT_SECRET = os.getenv("JWT_SECRET")    
+JWT_SECRET = os.getenv("JWT_SECRET")  
+RECAPTCHA_SECRET_KEY = os.getenv("RECAPTCHA_SECRET_KEY")  
 
 app = Flask(__name__) # Set up Flask app
 
@@ -186,9 +187,20 @@ def send_email():
     name = data.get('name')
     email = data.get('email')
     message = data.get('message')
+    token = data.get('token')
 
-    if not name or not email or not message:
+    if not name or not email or not message or not token:
         return jsonify({'error': 'Missing fields'}), 400
+
+    # Verify reCAPTCHA
+    verify_url = "https://www.google.com/recaptcha/api/siteverify"
+    payload = {"secret": RECAPTCHA_SECRET_KEY, "response": token}
+    r = requests.post(verify_url, data=payload)
+    result = r.json()
+    print(f"reCAPTCHA verification result: {result}")
+
+    if not result.get("success"):
+        return jsonify({'error': 'Invalid reCAPTCHA'}), 400
 
     # Compose email
     msg = Message(subject=f"New message from {name}",

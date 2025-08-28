@@ -30,7 +30,7 @@
   align-items: center;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1050px) {
   .nav {
     position: fixed;
     top: 0;
@@ -69,7 +69,7 @@
   color: #801421;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1050px) {
   .nav-link {
     margin-left: 0;
     margin-bottom: 20px;
@@ -82,7 +82,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1050px) {
   .hamburger {
     display: block;
     position: absolute;
@@ -129,7 +129,7 @@
   outline-offset: 2px;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1050px) {
   .logout-btn {
     margin-left: 0;
     margin-top: 10px;
@@ -193,21 +193,24 @@
   color: #801421;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1050px) {
   /* responsive for language button */
   .language-dropdown {
-    margin-left: 0;
-    margin-top: 10px;
+    position: absolute; /* Pin to top-left of the fullscreen nav */
+    top: 20px;
+    left: 20px;
+    margin: 0; /* Override desktop margin */
+    z-index: 1003; /* Above nav content */
   }
 
   .language-btn {
-    font-size: 24px;
-    padding: 14px 22px;
-    border-radius: 35px;
+    font-size: 17px; /* Decrease size on smaller screens as requested */
+    padding: 8px 14px;
+    border-radius: 25px;
   }
 
   .language-option {
-    font-size: 22px;
-    padding: 16px 20px;
+    font-size: 14px;
+    padding: 10px 14px;
   }
 }

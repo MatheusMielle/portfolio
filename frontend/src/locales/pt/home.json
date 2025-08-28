@@ -5,7 +5,10 @@
     "subtitle": "Sinta-se à vontade para explorar as músicas que me inspiram."
   },
   "track-widget": {
-    "title": "Ouvindo Agora",
-    "back": "Voltar"
+  "title": "Ouvindo Agora",
+  "back": "Voltar",
+  "loading": "Carregando músicas...",
+  "error": "Não foi possível carregar as músicas.",
+  "retry": "Tentar novamente"
   }
 }
