@@ -2,9 +2,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1rem 2rem calc(0.75rem + env(safe-area-inset-bottom, 0));
   color: #ffffff;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -13,20 +13,38 @@
   width: 100%;
   text-align: center;
   z-index: 1000;
+  gap: 1rem;
 }
 
 .footer-left,
-.footer-center,
 .footer-right {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
+/* Default: center participates in flex row (sits between left & right) */
 .footer-center {
+  position: relative;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  flex-grow: 1;
+  flex: 1 1 auto;
+  text-align: center;
+  font-size: 12px;
+  max-width: 780px;
+  line-height: 1.25;
+  padding: 0 0.5rem;
 }
+
+/* Prevent overlap if text gets too wide */
+.footer-center a { color: #ffffff; }
+.footer-center a:hover { color: #801421; }
+/* Explicit spacing between inline links */
+.footer-center a { display: inline-block; margin: 0 4px; }
+
+/* Fallback spacing for browsers without flex gap support */
+.footer-right a + a { margin-left: 1rem; }
 
 .footer-link {
   text-decoration: none;
@@ -48,20 +66,51 @@
   color: #801421;
 }
 
-/* Responsive styles */
-@media (max-width: 450px) {
-  .footer-container {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 1rem;
-    text-align: center;
-  }
-
-  .footer-left,
-  .footer-center,
-  .footer-right {
-    justify-content: center;
-    margin: 0.25rem 0;
-    width: 100%;
+/* Large-wide screens: visually absolute center independent of side widths */
+@media (min-width: 1200px) {
+  .footer-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    flex: 0 0 auto;
+    max-width: min(60%, 900px);
   }
 }
+
+/* Medium breakpoint (tablets / narrow desktops): place center below right */
+@media (max-width: 900px) {
+  .footer-container {
+    flex-wrap: wrap;
+    padding: 0.85rem 1.25rem calc(0.65rem + env(safe-area-inset-bottom, 0));
+  }
+  .footer-center {
+    order: 3;
+    flex: 1 1 100%;
+    max-width: 100%;
+    padding: 0.4rem 0 0;
+  }
+  .footer-left { order: 1; }
+  .footer-right { order: 2; }
+}
+
+/* Small breakpoint: stack cleanly, slightly smaller text */
+@media (max-width: 900px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.75rem 1rem calc(0.6rem + env(safe-area-inset-bottom, 0));
+  }
+  .footer-left,
+  .footer-right { justify-content: center; }
+  .footer-center { font-size: 11px; line-height: 1.3; }
+}
+
+/* Extra narrow: allow long words to break */
+@media (max-width: 420px) {
+  .footer-center { 
+    font-size: 8px;
+   }
+}
+
+

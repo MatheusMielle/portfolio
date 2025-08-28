@@ -5,7 +5,10 @@
     "subtitle": "Feel free to scroll through the music that fuels my focus."
   },
   "track-widget": {
-    "title": "Currently Listening",
-    "back": "Back"
+  "title": "Currently Listening",
+  "back": "Back",
+  "loading": "Loading tracks...",
+  "error": "Couldn't load tracks.",
+  "retry": "Retry"
   }
 }

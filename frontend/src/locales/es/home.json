@@ -6,6 +6,9 @@
   },
   "track-widget": {
     "title": "Escuchando Actualmente",
-    "back": "Volver"
+    "back": "Volver",
+    "loading": "Cargando canciones...",
+    "error": "Error al cargar canciones.",
+    "retry": "Reintentar"
   }
 }
