@@ -32,6 +32,20 @@
       ]
     },
     {
+      "name": "Programa de Classificação de Artigos",
+      "image": "/images/classifier.png",
+      "description": "Um programa que classifica artigos em categorias de Notícias, Esportes ou Culinária, analisando frequências de palavras e pontuando com base em conjuntos de dados treinados.",
+      "github": "https://github.com/MatheusMielle/ArticleClassifcation",
+      "demo": "/article-classifier",
+      "tech": [
+        { "name": "C++", "icon": "SiCplusplus" },
+        { "name": "Python - Flask", "icon": "FaPython" },
+        { "name": "HTML", "icon": "FaHtml5" },
+        { "name": "CSS", "icon": "FaCss3Alt" },
+        { "name": "JavaScript", "icon": "FaJsSquare" }
+      ]
+    },
+    {
       "name": "Sistema de Banco de Dados PASS",
       "image": "/images/placeholder.png",
       "description": "Uma plataforma full-stack modernizada que simplifica o pedido de testes, registro de pontuações e gerenciamento de dados dos alunos, substituindo um sistema legado antigo por um fluxo de trabalho mais eficiente e seguro.",
@@ -40,7 +54,7 @@
       "tech": [
         { "name": "React", "icon": "FaReact" },
         { "name": "TypeScript", "icon": "SiTypescript" },
-        { "name": "ASP .NET", "icon": "FaDotNet" },
+        { "name": "ASP .NET", "icon": "SiDotnet" },
         { "name": "C#", "icon": "TbBrandCSharp" },
         { "name": "JWT", "icon": "SiJsonwebtokens" },
         { "name": "MySQL", "icon": "GrMysql" },
@@ -65,20 +79,12 @@
       "github": "https://github.com/MatheusMielle/JunggleWordMania",
       "demo": "",
       "tech": [
-        { "name": "Flask", "icon": "FaPython" },
-        { "name": "HTML", "icon": "FaJsSquare" },
-        { "name": "CSS", "icon": "SiBootstrap" },
+        { "name": "Python - Flask", "icon": "FaPython" },
+        { "name": "HTML", "icon": "FaHtml5" },
+        { "name": "CSS", "icon": "FaCss3Alt" },
         { "name": "JavaScript", "icon": "FaJsSquare" },
         { "name": "MySQL", "icon": "GrMysql" }
       ]
-    },
-    {
-      "name": "Programa de Classificação de Artigos",
-      "image": "/images/placeholder.png",
-      "description": "Um programa que classifica artigos em categorias de Notícias, Esportes ou Culinária, analisando frequências de palavras e pontuando com base em conjuntos de dados treinados.",
-      "github": "https://github.com/MatheusMielle/ArticleClassifcation",
-      "demo": "",
-      "tech": [{ "name": "C++", "icon": "SiCplusplus" }]
     }
   ],
   "try": "Experimente"
