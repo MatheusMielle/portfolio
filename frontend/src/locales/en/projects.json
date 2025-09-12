@@ -32,6 +32,20 @@
       ]
     },
     {
+      "name": "Article Classification Program",
+      "image": "/images/classifier.png",
+      "description": "A program that classifies articles into News, Sports, or Culinary categories by analyzing word frequencies and scoring against trained datasets.",
+      "github": "https://github.com/MatheusMielle/ArticleClassifcation",
+      "demo": "/article-classifier",
+      "tech": [
+        { "name": "C++", "icon": "SiCplusplus" },
+        { "name": "Python - Flask", "icon": "FaPython" },
+        { "name": "HTML", "icon": "FaHtml5" },
+        { "name": "CSS", "icon": "FaCss3Alt" },
+        { "name": "JavaScript", "icon": "FaJsSquare" }
+      ]
+    },
+    {
       "name": "PASS Database System",
       "image": "/images/placeholder.png",
       "description": "A modernized full-stack platform that streamlines test ordering, score logging, and student data management—replacing an outdated legacy system with a more efficient and secure workflow.",
@@ -40,7 +54,7 @@
       "tech": [
         { "name": "React", "icon": "FaReact" },
         { "name": "TypeScript", "icon": "SiTypescript" },
-        { "name": "ASP .NET", "icon": "FaDotNet" },
+        { "name": "ASP .NET", "icon": "SiDotnet" },
         { "name": "C#", "icon": "TbBrandCSharp" },
         { "name": "JWT", "icon": "SiJsonwebtokens" },
         { "name": "MySQL", "icon": "GrMysql" },
@@ -65,20 +79,12 @@
       "github": "https://github.com/MatheusMielle/JunggleWordMania",
       "demo": "",
       "tech": [
-        { "name": "Flask", "icon": "FaPython" },
-        { "name": "HTML", "icon": "FaJsSquare" },
-        { "name": "CSS", "icon": "SiBootstrap" },
+        { "name": "Python - Flask", "icon": "FaPython" },
+        { "name": "HTML", "icon": "FaHtml5" },
+        { "name": "CSS", "icon": "FaCss3Alt" },
         { "name": "JavaScript", "icon": "FaJsSquare" },
         { "name": "MySQL", "icon": "GrMysql" }
       ]
-    },
-    {
-      "name": "Article Classification Program",
-      "image": "/images/placeholder.png",
-      "description": "A program that classifies articles into News, Sports, or Culinary categories by analyzing word frequencies and scoring against trained datasets.",
-      "github": "https://github.com/MatheusMielle/ArticleClassifcation",
-      "demo": "",
-      "tech": [{ "name": "C++", "icon": "SiCplusplus" }]
     }
   ],
   "try": "Try it out"
